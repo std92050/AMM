@@ -17,7 +17,11 @@ def test(did_pass):
 # Assume that the list is NOT nested.
 
 def rev(list):
-    pass
+    k=[]
+    for i in range(len(list)):
+        k.append(list[len(list)-i-1])
+    return k
+        
 
 test( rev([1,2,3,4,5]) == [5,4,3,2,1] )
 test( rev(['a',2,'z',4,5]) == [5,4,'z',2,'a'] )
@@ -27,9 +31,19 @@ test( rev(['a',2,'z',4,5]) == [5,4,'z',2,'a'] )
 # The elements of the sub-list should also be reversed, as shown in the test.
 # Hint: use recursion.
 
-def deep_rev(list):
-    pass
+def deep_rev(x):
+    k=[]
+    for i in range(len(x)):
+        if type(x[len(x)-i-1])==list:
+            k.append(rev(x[len(x)-i-1]))
 
+        else:
+            k.append(x[len(x)-i-1])
+
+    return k
+    
+        
+    
 test( deep_rev([1,2,3,4,5]) == [5,4,3,2,1] )
 test( deep_rev([1, [2, 3], 4 ,5]) == [5,4,[3,2],1] )
 test( deep_rev([1, [2, 3], [4 ,5]]) == [[5,4],[3,2],1] )

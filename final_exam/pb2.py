@@ -37,7 +37,7 @@ test( 'z' == chr(122) )
 # Implement a function called inverse that gives you the mapping.
 
 def inverse(c):
-    pass
+    return chr(219-ord(c))
 
 test( inverse('a') == 'z' )
 test( inverse('b') == 'y' )
@@ -46,8 +46,9 @@ test( inverse('z') == 'a' )
 
 # pb2-2
 # Use inverse function above to create an inverse mapping dictionary called dic so that dic['a']=='z', dic['b']=='y', etc
-
-
+dic=dict()
+for i in range(97,122):
+    dic[chr(i)]=inverse(chr(i))
 test( dic['a'] == 'z' )
 test( dic['k'] == 'p' )
 test( dic['p'] == 'k' )
@@ -57,8 +58,14 @@ test( dic['p'] == 'k' )
 # Hint: it might help to use str.join method.
 
 def str_inversion(s):
-    pass
-
+    a=[]
+    a.append('')
+    for i in range(1,len(s)+1):
+        
+        a.append(a[i-1]+inverse(s[i-1]))
+        
+    return a[len(s)]
+    
 test( str_inversion('abcd') == 'zyxw')
 test( str_inversion('zyxw') == 'abcd')
 test( str_inversion('hello') == 'svool')
