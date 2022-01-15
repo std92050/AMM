@@ -13,8 +13,7 @@ def c(n,l):
     for i in range(n):
         a.fd(2*l*math.cos((math.pi-(2*math.pi/n))/2))
         
-
+        
         a.rt((360/n))
 
    
-c(20,9)
